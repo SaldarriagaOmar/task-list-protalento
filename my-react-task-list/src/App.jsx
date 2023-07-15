@@ -22,11 +22,10 @@ export default function App() {
     <div>
       <div id='form'>
         <h1>To-Do list</h1>
-        <h3>Type down your new task</h3>
+        <h3>Name your new task below</h3>
         <form action="" onSubmit={handleSubmit}>
           <input className='inText' type="text" placeholder='New task' onChange={(e) => setNewItem(e.target.value)} />
           <button>Add</button>
-          reset
         </form>
 
       </div>
