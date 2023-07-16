@@ -25,7 +25,7 @@ export default function App() {
         <h3>Name your new task below</h3>
         <form action="" onSubmit={handleSubmit}>
           <input className='inText' type="text" placeholder='New task' onChange={(e) => setNewItem(e.target.value)} />
-          <button>Add</button>
+          <button type="submit">Add</button>
         </form>
 
       </div>

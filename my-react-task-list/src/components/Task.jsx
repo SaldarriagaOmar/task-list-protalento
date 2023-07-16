@@ -3,7 +3,9 @@ export default function Task(props) {
     return (
         <div className="anyTask">
             <input type="checkbox" />
+            <div className="nombreTarea">
             <p>{props.description}</p>
+            </div>
             <div className="actionbutton">
                 <button id="edit"><svg
                     width="24"
