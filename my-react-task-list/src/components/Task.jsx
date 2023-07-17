@@ -2,7 +2,7 @@ import "./task.css"
 export default function Task(props) {
     return (
         <div className="anyTask">
-            <input type="checkbox" />
+            <input type="checkbox"/>
             <div className="nombreTarea">
             <p>{props.description}</p>
             </div>

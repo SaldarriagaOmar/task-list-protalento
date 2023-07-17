@@ -16,7 +16,7 @@ button {
 
 .nombreTarea {
     text-align: justify;
-    max-width: 250px;
+    width: 250px;
 }
 
 #edit:hover {

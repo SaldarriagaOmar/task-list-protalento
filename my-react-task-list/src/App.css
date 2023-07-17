@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: rgb(43, 43, 43);
 }
 
 #form {
@@ -24,12 +25,14 @@
   margin-top: 20px;
 }
 
+
 #form button:hover {
   background-color: rgb(55, 208, 55);
 }
 
 .inText:hover {
   background-color: rgb(43, 43, 43);
+  color: white;
 }
 
 .inText {
@@ -39,4 +42,11 @@
   font-family: 'Courier New', Courier, monospace;
   border-radius: 5px;
   width: 300px;
+}
+
+#form p {
+  margin: 0;
+  text-align: start;
+  font-size: small;
+  color: darkgrey;
 }
