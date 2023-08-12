@@ -1,40 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Task from './components/task';
+import { useTaskOptions } from './components/useTaskOptions';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const { tasks, createTask, deleteTask, updateTask } = useTaskOptions();
+
   const [newItem, setNewItem] = useState('');
-
-  useEffect(() => {
-    const data = localStorage.getItem('toDoItems');
-    if (data) {
-      setTasks(JSON.parse(data));
-    }
-  }, []);
-
-  function AddTask() {
-    const taskItem = {
-      id: tasks.length,
-      item: newItem,
-      status: false,
-    };
-    setTasks([...tasks, taskItem]);
-    setNewItem('');
-
-
-    localStorage.setItem('toDoItems', JSON.stringify([...tasks, taskItem]));
-  }
-
-  function handleDelete(id) {
-    setTasks(tasks.filter(task => task.id !== id));
-
-    localStorage.setItem('toDoItems', JSON.stringify(tasks.filter(task => task.id !== id)));
-  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    AddTask();
+    createTask(newItem);
+    setNewItem('');
   }
 
   return (
@@ -62,11 +39,9 @@ function App() {
         {tasks.map(task => (
           <Task
             key={task.id}
-            description={task.item}
-            onDelete={handleDelete}
-            id={task.id}
-            tasks={tasks}
-            setTasks={setTasks}
+            task={task}
+            onDelete={deleteTask}
+            onUpdate={updateTask}
           />
         ))}
       </div>

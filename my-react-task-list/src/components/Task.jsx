@@ -1,25 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './task.css';
 
 export default function Task(props) {
   const [isDone, setIsDone] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedDescription, setEditedDescription] = useState(props.description);
-
-  useEffect(() => {
-    const data = localStorage.getItem('toDoItems');
-    if (data) {
-      props.setTasks(JSON.parse(data));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('toDoItems', JSON.stringify(props.tasks));
-  }, [props.tasks]);
-
-  useEffect(() => {
-    localStorage.setItem('toDoItems', JSON.stringify(props.tasks));
-  }, [props.tasks]);
+  const [editedDescription, setEditedDescription] = useState(props.task.item);
 
   function handleChange(e) {
     setEditedDescription(e.target.value);
@@ -29,17 +14,18 @@ export default function Task(props) {
     setIsEditing(true);
   }
 
-  function handleSave() {
-    setIsEditing(false);
-  }
-
   function confirmDelete() {
     const confirmDelete = window.confirm(
       'Are you sure you want to delete this task? This action cannot be undone.'
     );
     if (confirmDelete) {
-      props.onDelete(props.id);
+      props.onDelete(props.task.id);
     }
+  }
+
+  function handleSave() {
+    setIsEditing(false);
+    props.onUpdate(props.task.id, editedDescription);
   }
 
   return (
@@ -59,7 +45,7 @@ export default function Task(props) {
             required
           />
         ) : (
-          <p className={isDone ? '' : 'checked'}>{props.description}</p>
+          <p className={isDone ? '' : 'checked'}>{props.task.item}</p>
         )}
       </div>
       <div className="actionbutton">
