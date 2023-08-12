@@ -17,7 +17,7 @@ function App() {
   return (
     <div>
       <div id="form">
-        <h1>To-Do list</h1>
+        <h1>To-Do list <img src="./src/assets/logo.png" alt="Logo" id='logo' /></h1>
         <h3>Name your new task below</h3>
 
         <form action="" onSubmit={handleSubmit}>

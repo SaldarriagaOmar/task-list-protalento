@@ -26,6 +26,11 @@
 
 }
 
+#logo{
+  width: 50px;
+  padding-left:10px;
+  justify-content: center;
+}
 
 #form button:hover {
   background-color: rgb(55, 208, 55);
