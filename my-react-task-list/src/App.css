@@ -23,8 +23,14 @@
   border-radius: 5px;
   color: white;
   margin-top: 20px;
+
 }
 
+#logo{
+  width: 50px;
+  padding-left:10px;
+  justify-content: center;
+}
 
 #form button:hover {
   background-color: rgb(55, 208, 55);
@@ -42,6 +48,7 @@
   font-family: 'Courier New', Courier, monospace;
   border-radius: 5px;
   width: 300px;
+  font-size: medium;
 }
 
 #form p {
