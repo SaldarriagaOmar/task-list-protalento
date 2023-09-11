@@ -1,4 +1,4 @@
-.anyTask {
+#anyTask {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,8 +12,13 @@ button {
     justify-items: end;
     margin-left: 5px;
     padding-right: 5px;
+    width: 75px;
+    text-justify: auto;
 }
 
+p {
+    font-family: 'Courier New', Courier, monospace;
+}
 .nombreTarea {
     text-align: justify;
     width: 250px;
@@ -25,4 +30,21 @@ button {
 
 #delete:hover {
     background-color: rgb(255, 42, 0);
+}
+#save:hover {
+    background-color: rgb(55, 208, 55);
+}
+
+.taskText {
+    min-height: 28px;
+    padding: 12px 18px;
+    margin-right: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    border-radius: 5px;
+    width: 220px;
+  }
+.checked{
+    text-decoration: line-through;
+    color: dimgrey;
 }
