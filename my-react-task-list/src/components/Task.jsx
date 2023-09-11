@@ -4,10 +4,11 @@ import './task.css';
 export default function Task(props) {
   const [isDone, setIsDone] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedDescription, setEditedDescription] = useState(props.task.item);
+  const [editedTitle, setEditedTitle] = useState(props.task.item);
+  const [editedDescription, setEditedDescription] = useState(props.task.description)
 
   function handleChange(e) {
-    setEditedDescription(e.target.value);
+    setEditedTitle(e.target.value);
   }
 
   function handleEdit() {
@@ -25,27 +26,45 @@ export default function Task(props) {
 
   function handleSave() {
     setIsEditing(false);
-    props.onUpdate(props.task.id, editedDescription);
+    props.onUpdate(props.task.id, editedTitle, editedDescription);
   }
 
   return (
-    <div className="anyTask">
+    <div id='anyTask' class="form-check form-switch">
       <input
+        class="form-check-input"
         type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
         checked={!isDone}
         onChange={() => setIsDone(!isDone)}
       />
       <div className="nombreTarea">
         {isEditing ? (
-          <input
-            className="taskText"
-            type="text"
-            value={editedDescription}
-            onChange={handleChange}
-            required
-          />
+          <div>
+            <input
+              className="taskText"
+              type="text"
+              value={editedTitle}
+              onChange={(e) => setEditedTitle(e.target.value)}
+              required
+            />
+
+            <input
+              className='inText'
+              id='description'
+              type="text"
+              value={editedDescription}
+              onChange={(e) => setEditedDescription(e.target.value)}
+              placeholder='Task description'
+              required
+            />
+          </div>
         ) : (
-          <p className={isDone ? '' : 'checked'}>{props.task.item}</p>
+          <div>
+            <p className={isDone ? '' : 'checked'}><strong>{props.task.item}</strong></p>
+            <p className={isDone ? '' : 'checked'}>{props.task.description}</p>
+          </div>
         )}
       </div>
       <div className="actionbutton">

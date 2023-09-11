@@ -1,5 +1,5 @@
 #root {
-  width: 500px;
+  width: 550px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -44,11 +44,16 @@
 .inText {
   height: 25px;
   padding: 12px 18px;
-  margin-right: 20px;
   font-family: 'Courier New', Courier, monospace;
+  height: 40px;
   border-radius: 5px;
-  width: 300px;
+  width: 400px;
   font-size: medium;
+  margin: 0, auto;
+}
+
+.headElement {
+  margin: 10px;
 }
 
 #form p {
@@ -56,4 +61,8 @@
   text-align: start;
   font-size: small;
   color: darkgrey;
+}
+
+#title {
+  font-weight: bold;
 }
