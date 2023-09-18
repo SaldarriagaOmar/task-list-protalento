@@ -6,7 +6,6 @@ import './index.css'
 import Home from './components/routes/Home.jsx'
 import About from './components/routes/About.jsx'
 import Tasks from './components/routes/Tasks.jsx'
-import Menu from './components/routes/Menu.jsx'
 
 const router = createBrowserRouter([
   {

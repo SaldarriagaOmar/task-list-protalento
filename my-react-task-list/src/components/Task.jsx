@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './task.css';
+import { Stack, Checkbox, Input, background } from '@chakra-ui/react';
 import { EditIcon, DeleteIcon, CheckIcon, MinusIcon } from '@chakra-ui/icons'
 import { useTaskOptions } from './useTaskOptions';
 
@@ -41,17 +42,25 @@ export default function Task(props) {
   return (
     <div id='anyTask' class="form-check form-switch">
 
-      <input
-        class="form-check-input"
-        type="checkbox"
-        role="switch"
-        id={`flexSwitchCheck_${props.task.id}`}
+      <Stack>
+        <Checkbox size='lg'
+        className='form-check-input'
+        marginLeft={10}
         checked={!isDone}
-        onChange={() => {
+        border='solid'
+        borderRadius={6}
+        role='switch'
+        onChange={()=>{
           checkedTask(props.task.id)
           setIsDone(!isDone)
-        }}
-      />
+        }
+        }
+        width={20}
+        height={20}
+        >
+          
+        </Checkbox>
+      </Stack>
       <div className="nombreTarea">
         {isEditing ? (
           <div>

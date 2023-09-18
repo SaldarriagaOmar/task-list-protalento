@@ -18,6 +18,9 @@ export default function About() {
         </ul>
         <p>We are committed to continuously improving our application and providing you with the best possible experience.</p>
         <p>This application was developed using modern technologies such as React and React Router to ensure optimal performance and usability.</p>
+        <div>
+          <p>By Ómar Saldarriaga</p>
+        </div>
       </div>
     </div>
   );

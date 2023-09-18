@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Task from '../Task';
 import { useTaskOptions } from '../useTaskOptions';
 import Menu from './Menu';
+import { Switch, Stack } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import '../../App.css';
 
@@ -25,7 +26,7 @@ function Tasks() {
 
   return (
     <div>
-      <Menu/>
+      <Menu />
       <div id="form">
         <h1>To-Do list <img src="./src/assets/logo.png" alt="Logo" id='logo' /></h1>
         <h3>Name your new task below</h3>
