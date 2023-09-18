@@ -1,9 +1,9 @@
 #root {
-  width: 500px;
+  width: 550px;
+  height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: rgb(43, 43, 43);
 }
 
 #form {
@@ -23,12 +23,15 @@
   border-radius: 5px;
   color: white;
   margin-top: 20px;
+
+}
+
+#logo{
+  width: 50px;
+  padding-left:10px;
 }
 
 
-#form button:hover {
-  background-color: rgb(55, 208, 55);
-}
 
 .inText:hover {
   background-color: rgb(43, 43, 43);
@@ -38,10 +41,16 @@
 .inText {
   height: 25px;
   padding: 12px 18px;
-  margin-right: 20px;
   font-family: 'Courier New', Courier, monospace;
+  height: 40px;
   border-radius: 5px;
-  width: 300px;
+  width: 400px;
+  font-size: medium;
+  margin: 0, auto;
+}
+
+.headElement {
+  margin: 10px;
 }
 
 #form p {
@@ -49,4 +58,14 @@
   text-align: start;
   font-size: small;
   color: darkgrey;
+}
+
+#title {
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }
