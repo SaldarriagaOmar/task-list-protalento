@@ -11,11 +11,13 @@ export function useTaskOptions() {
     }
 
     const completedData = localStorage.getItem('completedTasks');
-    if (completedData) {
+    if (completedData !== undefined) {
       setCompletedTasks(JSON.parse(completedData));
+    } else {
+      setCompletedTasks([])
     }
   }, []);
-  
+
 
   const createTask = (newItem, description) => {
     const taskItem = {
@@ -26,9 +28,9 @@ export function useTaskOptions() {
     };
     setTasks((prevTasks) => [...prevTasks, taskItem]);
 
-    setCompletedTasks((prevCompletedTasks) =>[
+    setCompletedTasks((prevCompletedTasks) => [
       ...prevCompletedTasks,
-      {...taskItem, status: false}
+      { ...taskItem, status: false }
     ])
 
     updateLocalStorage([...tasks, taskItem], [...completedTasks, taskItem]);
@@ -51,10 +53,20 @@ export function useTaskOptions() {
     updateLocalStorage(updatedTasks, completedTasks);
   };
 
+  const checkedTask = (id) => {
+    const updatedTasks = tasks.map(task =>
+      task.id === id ? { ...task, status: !task.status } : task
+    );
+    /* setTasks(updatedTasks)
+    updateLocalStorage(updatedTasks) */
+  console.log(updateTask)
+  }
+
+
   const updateLocalStorage = (updatedTasks, updatedCompletedTasks) => {
     localStorage.setItem('toDoItems', JSON.stringify(updatedTasks));
     localStorage.setItem('completedTasks', JSON.stringify(updatedCompletedTasks));
   };
 
-  return { tasks, createTask, deleteTask, updateTask, completedTasks };
+  return { tasks, createTask, deleteTask, updateTask, completedTasks, checkedTask };
 }

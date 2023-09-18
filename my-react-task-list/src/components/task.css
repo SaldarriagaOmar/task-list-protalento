@@ -36,7 +36,7 @@ p {
 }
 
 .taskText {
-    min-height: 28px;
+    min-height: 20;
     padding: 12px 18px;
     margin-right: 20px;
     font-family: 'Courier New', Courier, monospace;
@@ -44,7 +44,7 @@ p {
     border-radius: 5px;
     width: 220px;
   }
-.checked{
+.checked {
     text-decoration: line-through;
     color: dimgrey;
 }

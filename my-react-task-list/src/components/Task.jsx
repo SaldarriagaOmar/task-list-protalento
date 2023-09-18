@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './task.css';
+import { EditIcon, DeleteIcon, CheckIcon, MinusIcon } from '@chakra-ui/icons'
+import { useTaskOptions } from './useTaskOptions';
 
 export default function Task(props) {
   const [isDone, setIsDone] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(props.task.item);
   const [editedDescription, setEditedDescription] = useState(props.task.description)
+  const { checkedTask } = useTaskOptions();
 
-  function handleChange(e) {
-    setEditedTitle(e.target.value);
-  }
+  useEffect(() => {
+    const savedIsDone = localStorage.getItem(`task_${props.task.id}_isDone`)
+    if (savedIsDone !== null)
+      setIsDone(savedIsDone === 'true')
+  }, [props.task.id])
+
+  useEffect(() => {
+    localStorage.setItem(`task_${props.task.id}_isDone`, isDone.toString())
+  }, [props.task.id, isDone])
 
   function handleEdit() {
-    setIsEditing(true);
+    setIsEditing(!isEditing);
   }
 
   function confirmDelete() {
@@ -31,13 +40,17 @@ export default function Task(props) {
 
   return (
     <div id='anyTask' class="form-check form-switch">
+
       <input
         class="form-check-input"
         type="checkbox"
         role="switch"
-        id="flexSwitchCheckDefault"
+        id={`flexSwitchCheck_${props.task.id}`}
         checked={!isDone}
-        onChange={() => setIsDone(!isDone)}
+        onChange={() => {
+          checkedTask(props.task.id)
+          setIsDone(!isDone)
+        }}
       />
       <div className="nombreTarea">
         {isEditing ? (
@@ -51,7 +64,7 @@ export default function Task(props) {
             />
 
             <input
-              className='inText'
+              className='taskText'
               id='description'
               type="text"
               value={editedDescription}
@@ -62,24 +75,35 @@ export default function Task(props) {
           </div>
         ) : (
           <div>
-            <p className={isDone ? '' : 'checked'}><strong>{props.task.item}</strong></p>
-            <p className={isDone ? '' : 'checked'}>{props.task.description}</p>
+            <p className={isDone ? '' : 'checked'}>
+              <strong>{props.task.item}</strong>
+            </p>
+            <p className={isDone ? '' : 'checked'}>
+              {props.task.description}
+            </p>
           </div>
         )}
       </div>
       <div className="actionbutton">
         {isEditing ? (
-          <button id="save" onClick={handleSave}>
-            Save
-          </button>
+          <>
+            <button id="save" onClick={handleSave}>
+              <CheckIcon />
+            </button>
+            <button id="cancel" onClick={handleEdit}>
+              <MinusIcon />
+            </button>
+          </>
         ) : (
-          <button id="edit" onClick={handleEdit}>
-            Edit
-          </button>
+          <>
+            <button id="edit" onClick={handleEdit}>
+              <EditIcon />
+            </button>
+            <button id="delete" onClick={confirmDelete}>
+              <DeleteIcon />
+            </button>
+          </>
         )}
-        <button id="delete" onClick={confirmDelete}>
-          Del
-        </button>
       </div>
     </div>
   );

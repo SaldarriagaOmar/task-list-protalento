@@ -1,9 +1,9 @@
 #root {
   width: 550px;
+  height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: rgb(43, 43, 43);
 }
 
 #form {
@@ -29,12 +29,9 @@
 #logo{
   width: 50px;
   padding-left:10px;
-  justify-content: center;
 }
 
-#form button:hover {
-  background-color: rgb(55, 208, 55);
-}
+
 
 .inText:hover {
   background-color: rgb(43, 43, 43);
@@ -65,4 +62,10 @@
 
 #title {
   font-weight: bold;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }
